@@ -1,4 +1,4 @@
-const productModel = require("../models/product.model");
+const Product = require("../models/product.model");
 
 //index controller to test  working api requests to database
 module.exports.index = (req, res) => {
