@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import {browserRouter, Routes, Route, BrowserRouter} from 'react-router-dom';
-import Main from '../views/Main';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import Main from './views/Main';
 import './App.css';
 
 function App() {
@@ -10,7 +10,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Main/>} path="/home" default/>
-
         </Routes>
       </BrowserRouter>
     </div>

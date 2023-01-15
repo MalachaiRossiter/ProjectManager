@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-const PersonList = (props) => {
-    const {product, setProduct} = props;
+const ProductList = (props) => {
 
+    const {product, setProduct} = props;
     useEffect(() => {
         axios.get('http://localhost:8000/api/products')
         .then((res) => {
@@ -25,4 +25,4 @@ const PersonList = (props) => {
         </div>
     )
 }
-export default PersonList;
+export default ProductList;
