@@ -1,11 +1,18 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import axios from 'axios';
+import {browserRouter, Routes, Route, BrowserRouter} from 'react-router-dom';
+import Main from '../views/Main';
 import './App.css';
-import ProductForm from './components/ProductForm';
 
 function App() {
   return (
     <div className="App">
-      <ProductForm/>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Main/>} path="/home" default/>
+
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
