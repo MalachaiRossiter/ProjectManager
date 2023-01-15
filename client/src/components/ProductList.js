@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 const ProductList = (props) => {
 
     const {product, setProduct} = props;
     useEffect(() => {
-        axios.get('http://localhost:8000/api/products')
+        axios.get('http://localhost:8000/api/product')
         .then((res) => {
             console.log(res.data);
             setProduct(res.data);
@@ -19,7 +20,11 @@ const ProductList = (props) => {
         <div>
             {
                 product.map((product, index) =>{
-                    return <p key={index}>{product.title}</p>
+                    return (
+                        <div key={index}>
+                            <Link to={`/product/${product._id}`}>{product.title}</Link>
+                        </div>
+                    )
                 })
             }
         </div>
