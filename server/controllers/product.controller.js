@@ -12,6 +12,7 @@ module.exports.createProduct = (req, res) => {
     .catch(err => res.json(err));
 }
 
+//gets all of the products in the database
 module.exports.getAllProducts = (req, res) => {
     Product.find({})
     .then(products => {
@@ -24,8 +25,24 @@ module.exports.getAllProducts = (req, res) => {
     })
 }
 
+//gets a singular product from the database
 module.exports.getProduct = (req, res) => {
     Product.findOne({_id:req.params.id})
     .then(product => res.json(product))
     .catch(err => res.json(err));
 }
+
+//gets a singular product from the database
+module.exports.updateProduct = (req, res) => {
+    Product.findOneAndUpdate({_id: req.params.id}, req.body, {new:true})
+    .then(updatedProduct => res.json(updatedProduct))
+    .catch(err => res.json(err))
+}
+
+//deletes a product based on an id from the database
+module.exports.deleteProduct = (req, res) => {
+    Product.deleteOne({_id:req.params.id})
+    .then(deletedProduct => res.json(deletedProduct))
+    .catch(err => console.log(err))
+}
+
