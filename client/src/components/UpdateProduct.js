@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import ProductForm from './ProductForm';
+import DeleteButton from './DeleteButton';
 
 
 const Update = (props) => {
@@ -18,7 +19,7 @@ const Update = (props) => {
         })
     }, [])
     
-    const UpdateProduct = (productParam) => {
+    const updateProduct = (productParam) => {
         axios.put(`http://localhost:8000/api/product/${id}`, productParam)
         .then(res => {
             console.log(res);
@@ -30,10 +31,14 @@ const Update = (props) => {
     return (
         <div>
             <h1>Update a Product</h1>
-            {
-                loaded && <ProductForm onSubmitProp={UpdateProduct}
-                inititalTitle={product.title} initialPrice={product.price} initialDescription={product.description}/>
-            }
+            {   
+                loaded && (
+                <div>
+                    <ProductForm onSubmitProp={updateProduct}
+                        initialTitle={product.title} initialPrice={product.price} initialDescription={product.description}/>
+                    <DeleteButton productId={product._id} successCallback={() => navigate('/home')} />
+                </div>
+            )}
         </div>
     )
 }

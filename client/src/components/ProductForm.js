@@ -8,22 +8,22 @@ const ProductForm = (props) => {
     //runs once form is submitted
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        onSubmitProp({title, price, description})
+        onSubmitProp({title, price, description});
     }
     return (
         <div>
             <form onSubmit={onSubmitHandler}>
                 <p>
                     <label>Product Title Please</label><br/>
-                    <input type="text" onChange={(e)=> setTitle(e.target.value)}/>
+                    <input type="text" value={title} onChange={(e)=> setTitle(e.target.value)}/>
                 </p>
                 <p>
                     <label>Product Price Please</label><br/>
-                    <input type="text" onChange={(e)=> setPrice(e.target.value)}/>
+                    <input type="text" value={price} onChange={(e)=> setPrice(e.target.value)}/>
                 </p>
                 <p>
                     <label>Product Description Please</label><br/>
-                    <input type="text" onChange={(e)=> setDescription(e.target.value)}/>
+                    <input type="text" value={description} onChange={(e)=> setDescription(e.target.value)}/>
                 </p>
                 <input type="submit"/>
             </form>
